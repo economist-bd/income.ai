@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI ইনকাম ব্লুপ্রিন্ট - অনলাইন কোর্স</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* ============ CSS স্টাইল ============ */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', sans-serif; }
+        body { background-color: #f0f2f5; color: #333; }
+
+        /* ইউটিলিটি ক্লাস */
+        .hidden { display: none !important; }
+        .btn { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-primary { background-color: #2563eb; color: white; }
+        .btn-primary:hover { background-color: #1d4ed8; }
+
+        /* ============ ১. ল্যান্ডিং পেজ স্টাইল ============ */
+        header { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .logo { font-size: 24px; font-weight: 700; color: #2563eb; }
+        
+        .hero { text-align: center; padding: 80px 20px; background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 20px; }
+        
+        /* লগিন ফর্ম স্টাইল */
+        .login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 2000; }
+        .login-box { background: white; padding: 40px; border-radius: 10px; width: 350px; text-align: center; }
+        .login-box input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+
+        /* ============ ২. কোর্স ড্যাশবোর্ড স্টাইল ============ */
+        #dashboard-view { display: flex; height: 100vh; overflow: hidden; }
+        
+        /* সাইডবার (Sidebar) */
+        .sidebar { width: 250px; background: #111827; color: white; display: flex; flex-direction: column; }
+        .sidebar-header { padding: 20px; font-size: 1.2rem; border-bottom: 1px solid #374151; font-weight: bold; }
+        .lesson-list { flex-grow: 1; overflow-y: auto; list-style: none; }
+        .lesson-item { padding: 15px 20px; border-bottom: 1px solid #1f2937; cursor: pointer; transition: 0.2s; display: flex; align-items: center; }
+        .lesson-item:hover, .lesson-item.active { background-color: #2563eb; }
+        .lesson-item i { margin-right: 10px; font-size: 0.8rem; }
+        
+        /* মেইন কন্টেন্ট এরিয়া */
+        .main-content { flex-grow: 1; padding: 30px; overflow-y: auto; background: #f9fafb; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: black; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        
+        .content-text h2 { color: #1f2937; margin-bottom: 15px; font-size: 2rem; }
+        .content-text p { line-height: 1.8; color: #4b5563; margin-bottom: 15px; font-size: 1.1rem; }
+        .resource-box { background: #e0f2fe; padding: 15px; border-left: 4px solid #0284c7; border-radius: 4px; margin-top: 20px; }
+
+        /* মোবাইল রেস্পন্সিভ */
+        @media (max-width: 768px) {
+            #dashboard-view { flex-direction: column; height: auto; }
+            .sidebar { width: 100%; height: auto; max-height: 200px; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="landing-view">
+        <header>
+            <div class="logo">AI MasterClass</div>
+            <button onclick="showLogin()" class="btn btn-primary">লগিন করুন</button>
+        </header>
+
+        <section class="hero">
+            <h1>কোনো অভিজ্ঞতা ছাড়াই<br>AI দিয়ে ইনকাম শুরু করুন</h1>
+            <p>লগিন করে সম্পূর্ণ কোর্সটি ফ্রি-তে দেখা শুরু করুন।</p>
+            <br>
+            <button onclick="showLogin()" class="btn" style="background: #fbbf24; color: black;">কোর্স শুরু করুন</button>
+        </section>
+
+        <div style="padding: 50px 20px; text-align: center;">
+            <h2>কোর্সে যা যা থাকছে</h2>
+            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
+                <div style="background: white; padding: 20px; width: 250px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <i class="fas fa-video fa-2x" style="color: #2563eb; margin-bottom: 10px;"></i>
+                    <h4>ভিডিও টিউটোরিয়াল</h4>
+                </div>
+                <div style="background: white; padding: 20px; width: 250px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <i class="fas fa-file-alt fa-2x" style="color: #2563eb; margin-bottom: 10px;"></i>
+                    <h4>রিসোর্স ফাইল</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="login-modal" class="login-overlay hidden">
+        <div class="login-box">
+            <h2 style="margin-bottom: 20px;">লগিন করুন</h2>
+            <p style="font-size: 12px; color: red; margin-bottom: 10px;">(ডেমো: যেকোনো কিছু লিখে এন্টার দিন)</p>
+            <form onsubmit="handleLogin(event)">
+                <input type="email" placeholder="আপনার ইমেইল" required>
+                <input type="password" placeholder="পাসওয়ার্ড" required>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">প্রবেশ করুন</button>
+            </form>
+            <button onclick="hideLogin()" style="margin-top: 10px; background: none; border: none; cursor: pointer; color: #666;">বন্ধ করুন</button>
+        </div>
+    </div>
+
+    <div id="dashboard-view" class="hidden">
+        <aside class="sidebar">
+            <div class="sidebar-header">কোর্স মডিউল</div>
+            <ul class="lesson-list" id="lesson-list">
+                </ul>
+            <div style="padding: 20px;">
+                <button onclick="logout()" class="btn" style="background: #ef4444; color: white; width: 100%; font-size: 14px;">লগআউট</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="video-container">
+                <iframe id="video-player" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            
+            <div class="content-text">
+                <h2 id="lesson-title">লেসন টাইটেল লোড হচ্ছে...</h2>
+                <div id="lesson-desc">
+                    </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // কোর্সের ডাটাবেস (এখানে আপনি আপনার ইউটিউব ভিডিও আইডি বসাবেন)
+        // বর্তমানে ডেমো ভিডিও আইডি দেওয়া আছে।
+        const courseData = [
+            {
+                id: 1,
+                title: "১. কোর্সের পরিচিতি এবং AI কি?",
+                videoId: "yN7zpM_gCQA", // ইউটিউব ভিডিওর শেষের অংশ (ID)
+                desc: `
+                    <p>স্বাগতম! এই কোর্সে আমরা শিখব কিভাবে আর্টিফিশিয়াল ইন্টেলিজেন্স ব্যবহার করে আয় করা যায়।</p>
+                    <p>এই ভিডিওতে আলোচনা করা হয়েছে:</p>
+                    <ul>
+                        <li>AI কি এবং কেন এটি শিখবেন?</li>
+                        <li>কোর্স থেকে কি কি শিখতে পারবেন।</li>
+                        <li>মানসিক প্রস্তুতি।</li>
+                    </ul>
+                `
+            },
+            {
+                id: 2,
+                title: "২. ChatGPT একাউন্ট খোলা ও ব্যবহার",
+                videoId: "JTxsNm9IdYU",
+                desc: `
+                    <p>এই পর্বে আমরা দেখব কিভাবে ChatGPT ব্যবহার করে যেকোনো লেখা জেনারেট করা যায়।</p>
+                    <div class="resource-box">
+                        <strong>রিসোর্স:</strong> <a href="https://chat.openai.com" target="_blank">ChatGPT ওয়েবসাইট লিংক</a>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "৩. কন্টেন্ট রাইটিং করে ইনকাম",
+                videoId: "jH13jT0G2m0", 
+                desc: `
+                    <p>ব্লগ পোস্ট, ইমেইল এবং কপিরাইটিং করে কিভাবে আয় করবেন তার বিস্তারিত।</p>
+                    <p>আমরা শিখব: প্রম্পট ইঞ্জিনিয়ারিং এর বেসিক।</p>
+                `
+            },
+            {
+                id: 4,
+                title: "৪. ভিডিও তৈরি ও ফ্রিল্যান্সিং গাইডলাইন",
+                videoId: "L2H8rV8qGqU",
+                desc: `
+                    <p>ভিডিও এডিটিং এর জন্য AI টুলস এবং মার্কেটপ্লেসে কাজ পাওয়ার উপায়।</p>
+                    <p>উপসংহার এবং পরবর্তী পদক্ষেপ।</p>
+                `
+            }
+        ];
+
+        // এলিমেন্ট সিলেক্টর
+        const landingView = document.getElementById('landing-view');
+        const loginModal = document.getElementById('login-modal');
+        const dashboardView = document.getElementById('dashboard-view');
+        const lessonListEl = document.getElementById('lesson-list');
+        const videoPlayer = document.getElementById('video-player');
+        const lessonTitle = document.getElementById('lesson-title');
+        const lessonDesc = document.getElementById('lesson-desc');
+
+        // লগিন ফাংশনালিটি
+        function showLogin() {
+            loginModal.classList.remove('hidden');
+        }
+
+        function hideLogin() {
+            loginModal.classList.add('hidden');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault(); // পেজ রিলোড বন্ধ করা
+            // ডেমো লগিন: সরাসরি ড্যাশবোর্ডে নিয়ে যাবে
+            hideLogin();
+            landingView.classList.add('hidden');
+            dashboardView.classList.remove('hidden');
+            
+            // কোর্স লোড করা শুরু করুন
+            initCourse();
+        }
+
+        function logout() {
+            dashboardView.classList.add('hidden');
+            landingView.classList.remove('hidden');
+        }
+
+        // কোর্স লোডিং লজিক
+        function initCourse() {
+            // লিস্ট জেনারেট করা
+            lessonListEl.innerHTML = "";
+            courseData.forEach((lesson, index) => {
+                const li = document.createElement('li');
+                li.className = 'lesson-item';
+                if(index === 0) li.classList.add('active'); // প্রথমটি সিলেক্টেড থাকবে
+                li.innerHTML = `<i class="fas fa-play-circle"></i> ${lesson.title}`;
+                li.onclick = () => loadLesson(index);
+                lessonListEl.appendChild(li);
+            });
+
+            // প্রথম লেসন লোড করা
+            loadLesson(0);
+        }
+
+        function loadLesson(index) {
+            const lesson = courseData[index];
+            
+            // ভিডিও ইউআরএল আপডেট (YouTube Embed Format)
+            videoPlayer.src = `https://www.youtube.com/embed/${lesson.videoId}?rel=0`;
+            
+            // টাইটেল এবং টেক্সট আপডেট
+            lessonTitle.innerText = lesson.title;
+            lessonDesc.innerHTML = lesson.desc;
+
+            // মেনু হাইলাইট আপডেট
+            const items = document.querySelectorAll('.lesson-item');
+            items.forEach(item => item.classList.remove('active'));
+            items[index].classList.add('active');
+        }
+
+    </script>
+</body>
+</html>
