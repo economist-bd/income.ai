@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI ইনকাম ব্লুপ্রিন্ট - ফ্রি কোর্স</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* বেসিক রিসেট */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* হেডার স্টাইল */
+        header {
+            background-color: #ffffff;
+            padding: 15px 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .nav-btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* হিরো সেকশন */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background-color: #fbbf24;
+            color: #1e3a8a;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* কোর্স মডিউল সেকশন */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: #1f2937;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .module-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background-color: #eff6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .icon-box i {
+            font-size: 30px;
+            color: #2563eb;
+        }
+
+        .module-card h3 {
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+
+        .module-card p {
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+        /* সিলেবাস ডিটেইলস */
+        .syllabus {
+            background-color: white;
+            padding: 60px 20px;
+        }
+
+        .syllabus-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .syllabus-item h4 {
+            font-size: 1.2rem;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        /* বেনিফিট সেকশন */
+        .benefits {
+            background-color: #1f2937;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .benefits-list {
+            list-style: none;
+            max-width: 600px;
+            margin: 30px auto 0;
+            text-align: left;
+        }
+
+        .benefits-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .benefits-list i {
+            color: #10b981;
+            margin-right: 15px;
+        }
+
+        /* ফুটার */
+        footer {
+            background-color: #111827;
+            color: #9ca3af;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* রেস্পন্সিভ ডিজাইন */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">AI Master<span style="color: #fbbf24;">.</span></div>
+        <a href="#enroll" class="nav-btn">কোর্স শুরু করুন</a>
+    </header>
+
+    <section class="hero">
+        <h1>কোনো পূর্ব অভিজ্ঞতা ছাড়াই<br>AI দিয়ে ইনকাম শুরু করুন</h1>
+        <p>চ্যাটজিপিটি এবং এআই টুলস ব্যবহার করে মাসে হাজার ডলার আয়ের<br>কমপ্লিট প্র্যাকটিক্যাল গাইডলাইন।</p>
+        <a href="#modules" class="cta-button">ফ্রি-তে শিখুন</a>
+    </section>
+
+    <section id="modules" class="container">
+        <h2 class="section-title">আপনি যা যা শিখবেন</h2>
+        <div class="modules-grid">
+            <div class="module-card">
+                <div class="icon-box"><i class="fas fa-pen-nib"></i></div>
+                <h3>মডিউল ১: কন্টেন্ট রাইটিং</h3>
+                <p>ChatGPT ব্যবহার করে প্রফেশনাল ব্লগ, ইমেইল এবং কপিরাইটিং লিখে আয় করার কৌশল।</p>
+            </div>
+            <div class="module-card">
+                <div class="icon-box"><i class="fas fa-image"></i></div>
+                <h3>মডিউল ২: গ্রাফিক ডিজাইন</h3>
+                <p>Midjourney বা Bing দিয়ে ছবি তৈরি করে ক্লায়েন্ট সার্ভিস এবং স্টক সাইটে বিক্রি।</p>
+            </div>
+            <div class="module-card">
+                <div class="icon-box"><i class="fas fa-video"></i></div>
+                <h3>মডিউল ৩: ভিডিও মেকিং</h3>
+                <p>নিজের চেহারা না দেখিয়ে AI দিয়ে ইউটিউব ভিডিও এবং রিলস তৈরি করে ইনকাম।</p>
+            </div>
+            <div class="module-card">
+                <div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div>
+                <h3>মডিউল ৪: ফ্রিল্যান্সিং</h3>
+                <p>Fiverr এবং Upwork এ অ্যাকাউন্ট খোলা এবং প্রথম কাজ পাওয়ার সিক্রেট টিপস।</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="syllabus">
+        <h2 class="section-title">বিস্তারিত কোর্স কারিকুলাম</h2>
+        
+        <div class="syllabus-item">
+            <h4>১. পরিচিতি ও সেটআপ</h4>
+            <p>এআই (AI) কি? ফ্রি এবং পেইড টুলস পরিচিতি। চ্যাটজিপিটি একাউন্ট খোলা এবং সঠিক প্রম্পট লেখা।</p>
+        </div>
+
+        <div class="syllabus-item">
+            <h4>২. কন্টেন্ট থেকে ক্যাশ</h4>
+            <p>ব্লগ পোস্ট রাইটিং, প্রোডাক্ট ডেসক্রিপশন লেখা, এবং সোশ্যাল মিডিয়া ক্যাপশন লিখে আয়।</p>
+        </div>
+
+        <div class="syllabus-item">
+            <h4>৩. ডিজিটাল আর্ট মাস্টারি</h4>
+            <p>টেক্সট থেকে ছবি তৈরি করা। বইয়ের কভার ডিজাইন এবং লোগো ডিজাইনের আইডিয়া জেনারেশন।</p>
+        </div>
+
+        <div class="syllabus-item">
+            <h4>৪. ভিডিও অটোমেশন</h4>
+            <p>স্ক্রিপ্ট থেকে ভিডিও তৈরি। ভয়েস ওভার জেনারেট করা (TTS) এবং ভিডিও এডিটিং বেসিকস।</p>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <h2>কেন এই কোর্সটি স্পেশাল?</h2>
+        <ul class="benefits-list">
+            <li><i class="fas fa-check-circle"></i> কোনো কোডিং বা টেকনিক্যাল স্কিল লাগবে না।</li>
+            <li><i class="fas fa-check-circle"></i> শুধু মোবাইল বা সাধারণ ল্যাপটপ দিয়েই শুরু করা যাবে।</li>
+            <li><i class="fas fa-check-circle"></i> সম্পূর্ণ বাংলায় সহজ ভাষায় বোঝানো হয়েছে।</li>
+            <li><i class="fas fa-check-circle"></i> ফ্রিল্যান্সিং মার্কেটপ্লেসে কাজ পাওয়ার গাইডলাইন।</li>
+        </ul>
+        <br><br>
+        <a href="#" id="enroll" class="cta-button">আজই রেজিস্ট্রেশন করুন</a>
+    </section>
+
+    <footer>
+        <p>© ২০২৪ AI ইনকাম মাস্টারক্লাস। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p>সাপোর্ট: help@aicourse.com</p>
+    </footer>
+
+</body>
+</html>
